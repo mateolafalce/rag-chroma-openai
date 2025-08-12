@@ -7,7 +7,7 @@ This project implements a Retrieval-Augmented Generation (RAG) system using Flas
 1. Clone the repository and navigate to the project folder:
 
 ```bash
-git clone <REPO_URL>
+git clone https://github.com/mateolafalce/rag-chroma-openai.git
 cd rag-chroma
 ```
 
