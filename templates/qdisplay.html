@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questions in Database</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <button onclick="window.location.href='/'">Add Question</button>
+        <button onclick="window.location.href='/chat'">Chat</button>
+    </nav>
+    <div class="container">
+        <h1>Questions in Database</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Question</th>
+                    <th>Answer</th>
+                    <th style="width: 60px; text-align: center;">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for q, a in questions %}
+                <tr>
+                    <td>{{ q }}</td>
+                    <td>{{ a }}</td>
+                    <td style="text-align: center;">
+                        <button class="delete-btn" title="Delete" data-id="{{ q }}" style="background:none;border:none;cursor:pointer;color:#e74c3c;font-size:1.3em;">
+                            🗑️
+                        </button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div style="text-align:center; margin: 2rem 0;">
+        {% if has_prev %}
+            <a href="{{ url_for('questions', page=page-1) }}">
+                <button>Previous</button>
+            </a>
+        {% endif %}
+        <span style="margin: 0 1rem;">Page {{ page }} of {{ total_pages }}</span>
+        {% if has_next %}
+            <a href="{{ url_for('questions', page=page+1) }}">
+                <button>Next</button>
+            </a>
+        {% endif %}
+    </div>
+    <script>
+    document.querySelectorAll('.delete-btn').forEach(btn => {
+        btn.addEventListener('click', async function(e) {
+            e.preventDefault();
+            if (!confirm('Are you sure you want to delete this question?')) return;
+            const question_id = this.getAttribute('data-id');
+            const formData = new FormData();
+            formData.append('question_id', question_id);
+            const resp = await fetch('/delete_question', {
+                method: 'POST',
+                body: formData
+            });
+            const data = await resp.json();
+            alert(data.message || 'Operation finished');
+            if (data.ok) location.reload();
+        });
+    });
+    </script>
+</body>
+</html>

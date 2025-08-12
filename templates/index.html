@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question-Answer Form</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <button onclick="window.location.href='/questions'">View Questions</button>
+        <button onclick="window.location.href='/chat'">Chat</button>
+    </nav>
+    <div class="container">
+        <h1>Add Question and Answer</h1>
+        <form id="qa-form" action="/get_new_answer" method="POST">
+            <label for="question">Question:</label><br>
+            <input type="text" id="question" name="question" required><br>
+
+            <label for="answer">Answer:</label><br>
+            <textarea id="answer" name="answer" rows="4" required></textarea><br>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <script>
+    const form = document.getElementById('qa-form');
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const formData = new FormData(form);
+
+        try {
+            const resp = await fetch('/get_new_answer', {
+                method: 'POST',
+                body: formData
+            });
+
+            let data;
+            try {
+                data = await resp.json();
+            } catch {
+                alert('Error parsing server response');
+                return;
+            }
+
+            alert(data.message || 'Operation finished');
+
+            if (data.ok && data.exists === false) {
+                form.reset();
+                form.question.focus();
+            }
+        } catch (err) {
+            alert('Request error: ' + err);
+        }
+    });
+    </script>
+</body>
+</html>

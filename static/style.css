@@ -1,0 +1,147 @@
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f4f6f8;
+    margin: 0;
+    padding: 0;
+}
+.navbar {
+    background: #222e3c;
+    color: #fff;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: flex-end; 
+    align-items: center;
+}
+.navbar h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    margin-right: auto; 
+}
+        .navbar button {
+            background: #4f8cff;
+            color: #fff;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-left: 1rem;
+        }
+        .navbar button:hover {
+            background: #2563eb;
+        }
+        .container {
+            max-width: 500px;
+            margin: 2rem auto;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+            padding: 2rem 2.5rem;
+        }
+        h1 {
+            text-align: center;
+            color: #222e3c;
+            margin-bottom: 2rem;
+        }
+        label {
+            font-weight: 500;
+            color: #222e3c;
+            display: block;
+            margin-bottom: 0.3rem;
+            margin-top: 1.2rem;
+        }
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            margin-bottom: 1.2rem;
+            border: 1.5px solid #cfd8dc;
+            border-radius: 6px;
+            font-size: 1rem;
+            background: #f9fafb;
+            transition: border 0.2s;
+            box-sizing: border-box;
+        }
+        input[type="text"]:focus, textarea:focus {
+            border: 1.5px solid #4f8cff;
+            outline: none;
+            background: #f0f7ff;
+        }
+        button[type="submit"] {
+            width: 100%;
+            background: #4f8cff;
+            color: #fff;
+            border: none;
+            padding: 0.9rem;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 1rem;
+        }
+        button[type="submit"]:hover {
+            background: #2563eb;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1.5rem;
+        }
+        th, td {
+            border: 1px solid #cfd8dc;
+            padding: 0.8rem;
+            text-align: left;
+        }
+        th {
+            background: #f4f6f8;
+            color: #222e3c;
+        }
+        tr:nth-child(even) {
+            background: #f9fafb;
+        }
+        .chat-container {
+            max-width: 600px;
+            margin: 2rem auto;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+            padding: 2rem 2.5rem;
+        }
+        .chat-label {
+            font-weight: 500;
+            color: #222e3c;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        .chat-textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1.5px solid #cfd8dc;
+            border-radius: 6px;
+            font-size: 1rem;
+            background: #f9fafb;
+            margin-bottom: 1.2rem;
+            resize: vertical;
+        }
+        .chat-btn {
+            background: #4f8cff;
+            color: #fff;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .chat-btn:hover {
+            background: #2563eb;
+        }
+        .chat-answer {
+            margin-top: 2rem;
+            background: #f4f6f8;
+            border-radius: 6px;
+            padding: 1rem;
+            color: #222e3c;
+            white-space: pre-wrap;
+        }

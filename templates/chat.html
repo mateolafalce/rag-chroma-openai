@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ask the Model</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <button onclick="window.location.href='/'">Add Question</button>
+        <button onclick="window.location.href='/questions'">View Questions</button>
+    </nav>
+    <div class="chat-container">
+        <h1>Ask the Model</h1>
+        <form id="chat-form">
+            <label class="chat-label" for="new_question">Your Question:</label>
+            <textarea id="new_question" class="chat-textarea" name="new_question" rows="4" required></textarea>
+            <button type="submit" class="chat-btn">Ask</button>
+        </form>
+        <div id="chat-answer" class="chat-answer" style="display:none;"></div>
+    </div>
+    <script>
+    const chatForm = document.getElementById('chat-form');
+    const chatAnswer = document.getElementById('chat-answer');
+    chatForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        chatAnswer.style.display = 'none';
+        chatAnswer.textContent = '';
+        const question = document.getElementById('new_question').value;
+        try {
+            const resp = await fetch('/chat', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ new_question: question })
+            });
+            const data = await resp.json();
+            if (data.answer) {
+                chatAnswer.textContent = data.answer;
+                chatAnswer.style.display = 'block';
+            } else {
+                chatAnswer.textContent = data.error || 'No answer received.';
+                chatAnswer.style.display = 'block';
+            }
+        } catch (err) {
+            chatAnswer.textContent = 'Request error: ' + err;
+            chatAnswer.style.display = 'block';
+        }
+    });
+    </script>
+</body>
+</html>
