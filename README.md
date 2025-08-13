@@ -2,6 +2,18 @@
 
 This project implements a Retrieval-Augmented Generation (RAG) system using Flask, OpenAI, and ChromaDB. It allows you to perform intelligent queries on your own data, integrating generative AI capabilities.
 
+<div align="center">
+
+# Hacker News Top 5 Articles
+
+<img src="static/1.png" alt="Preview" />
+
+<img src="static/2.png" alt="Preview" />
+
+<img src="static/3.png" alt="Preview" />
+
+</div>
+
 ## Installation
 
 1. Clone the repository and navigate to the project folder:
