@@ -4,8 +4,6 @@ This project implements a Retrieval-Augmented Generation (RAG) system using Flas
 
 <div align="center">
 
-# Hacker News Top 5 Articles
-
 <img src="static/1.png" alt="Preview" />
 
 <img src="static/2.png" alt="Preview" />
