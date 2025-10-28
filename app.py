@@ -10,13 +10,13 @@ app = Flask(__name__)
 load_dotenv()
 
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-CHROMA_PATH = "./chroma_db"
-COLLECTION_NAME = "quiz_knowledge"
-QUESTIONS_PER_PAGE = 10
-N_ANN = 4
-MODEL = "gpt-4.1"
-SYSTEM_PROMPT = "You are an expert in X. Answer based on the provided examples."
-EMBEDDING_MODEL = "text-embedding-3-small"
+CHROMA_PATH = os.getenv("CHROMA_PATH", "./chroma_db")
+COLLECTION_NAME = os.getenv("COLLECTION_NAME", "quiz_knowledge")
+QUESTIONS_PER_PAGE = int(os.getenv("QUESTIONS_PER_PAGE", 10))
+N_ANN = int(os.getenv("N_ANN", 4))
+MODEL = os.getenv("MODEL", "gpt-4.1")
+SYSTEM_PROMPT = os.getenv("SYSTEM_PROMPT", "You are an expert in X. Answer based on the provided examples.")
+EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "text-embedding-3-small")
 
 def embed(text):
     response = openai.embeddings.create(

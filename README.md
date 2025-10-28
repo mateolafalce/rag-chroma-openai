@@ -50,3 +50,35 @@ python app.py
 
 2. Access the web interface at [http://localhost:5000](http://localhost:5000).
 
+## Usar Docker
+
+Para levantar la aplicación usando Docker Compose sigue estos pasos:
+
+1. Crea un archivo `.env` en la raíz del proyecto con tu clave de OpenAI:
+
+```bash
+# .env
+OPENAI_API_KEY=sk-...
+```
+
+Docker Compose cargará automáticamente ese archivo y lo pasará al contenedor.
+
+2. Construye y arranca el servicio:
+
+```bash
+docker compose up --build
+```
+
+O, si usas la versión clásica de docker-compose:
+
+```bash
+docker-compose up --build
+```
+
+3. Abre tu navegador en http://localhost:5000
+
+Notas:
+- El volumen `./chroma_db` se monta dentro del contenedor para persistir la base de datos de Chroma entre reinicios.
+- Si quieres ejecutar en segundo plano añade la opción `-d` (ej.: `docker compose up --build -d`).
+
+
